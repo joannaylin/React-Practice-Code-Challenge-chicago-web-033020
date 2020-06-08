@@ -41,12 +41,10 @@ class App extends Component {
   };
 
   removeSushi = (props) => {
-    const updatedSushis = this.state.sushis.filter((sushi) => sushi.id !== props.id);
     const updatedEaten = [...this.state.eaten, props]
     const updatedMoney = this.state.money - props.price;
     if (updatedMoney > 0) {
       this.setState({
-        sushis: updatedSushis,
         eaten: updatedEaten,
         money: updatedMoney,
       });
