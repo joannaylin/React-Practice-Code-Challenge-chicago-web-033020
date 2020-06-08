@@ -5,13 +5,13 @@ import Sushi from "../components/Sushi";
 const SushiContainer = (props) => {
 
   const renderSushis = () => {
-    return props.showSushis.map((sushi) => {
+    return props.sushis.map((sushi) => {
       return (
         <Sushi
           key={sushi.id}
           sushi={sushi}
           handleEaten={props.removeSushi}
-          isAvailable={props.sushis.includes(sushi)}
+          gone={props.eaten.includes(sushi)}
         />
       );
     });
@@ -21,7 +21,7 @@ const SushiContainer = (props) => {
     <Fragment>
       <div className="belt">
         {renderSushis()}
-        <MoreButton renderNextSushis={props.renderNextSushis}/>
+        <MoreButton handleShowMore={props.handleShowMore}/>
       </div>
     </Fragment>
   );

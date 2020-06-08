@@ -14,7 +14,7 @@ const Table = (props) => {
       </h1>
       <div className="table">
         <div className="stack">
-          {renderPlates(props.hasEaten)}
+          {renderPlates(props.eaten)}
         </div>
       </div>
     </Fragment>

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const MoreButton = (props) => {
-    return <button onClick={props.renderNextSushis}>
-            More sushi!
-          </button>
-}
+  return <button onClick={props.handleShowMore}>More sushi!</button>;
+};
 
-export default MoreButton
+export default MoreButton;
