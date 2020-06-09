@@ -40,9 +40,9 @@ class App extends Component {
   };
 
   removeSushi = (sushi) => {
-    sushi.eaten = true
     const updatedMoney = this.state.money - sushi.price;
     if (updatedMoney > 0) {
+      sushi.eaten = true
       this.setState({
         money: updatedMoney,
       });
