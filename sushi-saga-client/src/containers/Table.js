@@ -7,6 +7,10 @@ const Table = (props) => {
     })
   }
 
+  const emptyPlates = () => {
+    return props.sushis.filter(sushi=> sushi.eaten === true)
+  }
+
   return (
     <Fragment>
       <h1 className="remaining">
@@ -14,7 +18,7 @@ const Table = (props) => {
       </h1>
       <div className="table">
         <div className="stack">
-          {renderPlates(props.eaten)}
+          {renderPlates(emptyPlates())}
         </div>
       </div>
     </Fragment>

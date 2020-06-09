@@ -10,7 +10,6 @@ class App extends Component {
     super();
     this.state = {
       sushis: [],
-      eaten: [],
       money: 100,
       offset: 0,
     };
@@ -19,9 +18,9 @@ class App extends Component {
   componentDidMount() {
     fetch(API)
       .then((resp) => resp.json())
-      .then((sushis) =>
+      .then((sushis) => 
         this.setState({
-          sushis: sushis,
+          sushis: sushis.map(sushi=> ({...sushi, eaten: false})),
         })
       );
   }
@@ -40,12 +39,11 @@ class App extends Component {
     });
   };
 
-  removeSushi = (props) => {
-    const updatedEaten = [...this.state.eaten, props]
-    const updatedMoney = this.state.money - props.price;
+  removeSushi = (sushi) => {
+    sushi.eaten = true
+    const updatedMoney = this.state.money - sushi.price;
     if (updatedMoney > 0) {
       this.setState({
-        eaten: updatedEaten,
         money: updatedMoney,
       });
     }
@@ -58,9 +56,8 @@ class App extends Component {
           sushis={this.renderFourSushis()}
           removeSushi={this.removeSushi}
           handleShowMore={this.handleShowMore}
-          eaten={this.state.eaten}
         />
-        <Table money={this.state.money} eaten={this.state.eaten} />
+        <Table money={this.state.money} sushis={this.state.sushis} />
       </div>
     );
   }

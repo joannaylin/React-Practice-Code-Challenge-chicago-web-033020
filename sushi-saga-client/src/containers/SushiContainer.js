@@ -11,7 +11,6 @@ const SushiContainer = (props) => {
           key={sushi.id}
           sushi={sushi}
           handleEaten={props.removeSushi}
-          gone={props.eaten.includes(sushi)}
         />
       );
     });
