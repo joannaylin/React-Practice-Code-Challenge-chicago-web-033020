@@ -40,8 +40,8 @@ class App extends Component {
   };
 
   removeSushi = (sushi) => {
-    const updatedMoney = this.state.money - sushi.price;
-    if (updatedMoney > 0) {
+    if (sushi.price > this.state.money) {
+      const updatedMoney = this.state.money - sushi.price;
       sushi.eaten = true
       this.setState({
         money: updatedMoney,
