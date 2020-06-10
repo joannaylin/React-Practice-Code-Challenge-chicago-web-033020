@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 const Sushi = (props) => {
-  const {id, name, img_url, price, eaten} = props.sushi
+  const {name, img_url, price, eaten} = props.sushi
 
   return (
     <div className="sushi">

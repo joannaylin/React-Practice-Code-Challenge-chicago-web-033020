@@ -40,11 +40,14 @@ class App extends Component {
   };
 
   removeSushi = (sushi) => {
-    if (sushi.price < this.state.money) {
+    if (sushi.price <= this.state.money) {
       const updatedMoney = this.state.money - sushi.price;
-      sushi.eaten = true
+      const updatedSushis = this.state.sushis.map(sushiObj=> {
+        return sushiObj.id === sushi.id ? {...sushiObj, eaten: true} : sushiObj
+      } )
       this.setState({
         money: updatedMoney,
+        sushis: updatedSushis
       });
     }
   };
